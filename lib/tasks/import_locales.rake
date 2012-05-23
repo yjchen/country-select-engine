@@ -60,8 +60,8 @@ end
 =end
 
 namespace :country_select do
-  desc 'import country'
-  task :import_country, [:locales] do |t, args|
+  desc 'import locales'
+  task :import_locales, [:locales] do |t, args|
     puts args
     CountrySelectEngine::Importer.new.import(args.locales)
   end

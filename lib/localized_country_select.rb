@@ -1,24 +1,30 @@
-# = LocalizedCountrySelect
+require "country-select-engine/engine"
+
+# = CountrySelectEngine
 #
 # View helper for displaying select list with countries:
 #
 #     localized_country_select(:user, :country)
 #
-# Works just like the default Rails' +country_select+ plugin, but stores countries as
+# Works just like the default Rails' +country_select+ plugin, 
+# but stores countries as
 # country *codes*, not *names*, in the database.
 #
 # You can easily translate country codes in your application like this:
 #     <%= I18n.t @user.country, :scope => 'countries' %>
 #
-# Uses the Rails internationalization framework (I18n) for translating the names of countries.
+# Uses the Rails internationalization framework (I18n) 
+# for translating the names of countries.
 #
-# Use Rake task <tt>rake import:country_select 'de'</tt> for importing country names
-# from Unicode.org's CLDR repository (http://www.unicode.org/cldr/data/charts/summary/root.html)
+# Use Rake task <tt>rake import:country_select 'de'</tt> 
+# for importing country names
+# from Unicode.org's CLDR repository 
+# (http://www.unicode.org/cldr/data/charts/summary/root.html)
 #
 # Code adapted from Rails' default +country_select+ plugin (previously in core)
 # See http://github.com/rails/country_select/tree/master/lib/country_select.rb
 #
-module LocalizedCountrySelect
+module CountrySelectEngine
   class << self
     # Returns array with codes and localized country names (according to <tt>I18n.locale</tt>)
     # for <tt><option></tt> tags
@@ -81,11 +87,11 @@ module ActionView
       def localized_country_options_for_select(selected = nil, priority_countries = nil, options = {})
         country_options = ""
         if priority_countries
-          country_options += options_for_select(LocalizedCountrySelect::priority_countries_array(priority_countries), selected)
+          country_options += options_for_select(CountrySelectEngine::priority_countries_array(priority_countries), selected)
           country_options += "<option value=\"\" disabled=\"disabled\">-------------</option>\n"
-          return country_options + options_for_select(LocalizedCountrySelect::localized_countries_array(options) - LocalizedCountrySelect::priority_countries_array(priority_countries), selected)
+          return country_options + options_for_select(CountrySelectEngine::localized_countries_array(options) - CountrySelectEngine::priority_countries_array(priority_countries), selected)
         else
-          return country_options + options_for_select(LocalizedCountrySelect::localized_countries_array(options), selected)
+          return country_options + options_for_select(CountrySelectEngine::localized_countries_array(options), selected)
         end
       end
       alias_method :country_options_for_select, :localized_country_options_for_select

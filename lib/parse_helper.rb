@@ -1,4 +1,4 @@
-module Import
+module CountrySelectEngine
   module ParseHelper
     def get_code row  
       code   = row.search("td[@class='g']").inner_text

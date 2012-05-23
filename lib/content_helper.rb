@@ -1,4 +1,4 @@
-module Import
+module CountrySelectEngine
   module ContentHelper
     def countries_yaml_content
       countries.inject([]) do |output, country|
