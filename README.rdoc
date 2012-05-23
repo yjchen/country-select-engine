@@ -1,0 +1,101 @@
+# CountrySelectEngine
+
+Rails engine to provide support for localized **select** menu with country names and for storing country information as country _code_ (eg. 'es'), not _name_ (eg. 'Spain'), in the database.
+
+Uses the Rails internationalization framework ("I18n":http://rails-i18n.org) for translating the names of countries.
+Requires Rails 3.0 or later
+Country names are loaded from hashes in engine directory, according to **I18n.locale** value.
+
+You can easily translate country codes in your application like this:
+
+```ruby
+  <%= I18n.t @user.country, :scope => 'countries' %>  
+```
+
+## Generating country locale files
+
+In your application
+
+    rake country_select:import_country[locales]
+
+or in dummy application of this engine
+
+    rake app:country_select:import_country[locales]
+
+Country names are imported from Unicode.org's CLDR repository (http://www.unicode.org/cldr/data/charts/summary/root.html)
+
+Don't forget to restart the application when you add new locale.
+
+ActionView helper code is adapted from Rails' default *country_select* plugin (previously in core).
+See http://github.com/rails/country_select/tree/master/lib/country_select.rb
+
+## Install & Usage
+
+Add this in Gemfile of your application
+
+gem 'country-select-engine'
+
+or any variation with :path or :git
+
+## Example
+
+```
+    <%= localized_country_select(:user, :country, [], :include_blank => 'Please choose...') %>  
+```
+
+will become:
+
+```
+  <select name="user[country]" id="user_country">
+  <option value="">Please choose...</option>
+  <option disabled="disabled" value="">-------------</option>
+  <option value="AF">Afghanistan</option>
+  ...
+  <option value="ZW">Zimbabwe</option>
+  </select>  
+```
+
+for the **en**> locale.
+
+## Options
+
+@:exclude@ option
+
+```
+  <%= localized_country_select(:user, :country, ['English'], :include_blank => 'Please choose...', :exclude => ['Afrikaans']) %>  
+```
+
+@:only@ option
+
+```
+  <%= localized_country_select(:user, :country, ['English'], :include_blank => 'Please choose...', :only => ['German', 'French']) %>  
+```
+
+## Important!
+
+Add translations for your language requirements using the rake tasks supplied, then use the generator to copy them into the Rails locales folder.
+
+## Framework usage
+
+This engine should also integrate nicely with various formbuilders, including Formtastic
+
+Formtastic example:
+
+```
+<%= semantic_form_for @user do |form| %>  
+  ...
+  <%= form.input :home_country, :as => :country, :priority_countries => ['USA'], :include_blank => 'Please choose country...', :only => ['USA', 'Germany', 'France']) %>    
+  ...
+<% end %>  
+```
+
+## Copyright
+
+Copyright (c) 2012 Yen-Ju Chen, released under the MIT license
+Copyright (c) 2008 Karel Minarik (www.karmi.cz), released under the MIT license
+
+## Other resources
+
+* http://github.com/rails/country_select (Default Rails plugin)
+* http://github.com/russ/country_code_select (Stores country code, not name)
+
