@@ -1,3 +1,12 @@
+<p><b>In English</b></p>
+<p>
+Translation of US is <%= t('US', :scope => 'countries') %>
+</p>
+<p>
+<%= localized_country_select(:user, :country, [], :include_blank => 'Please choose...') %>
+</p>
+<p><b>In Deutsch (Germany)</b></p>
+<% I18n.locale = :de %>
 <p>
 Translation of US is <%= t('US', :scope => 'countries') %>
 </p>
