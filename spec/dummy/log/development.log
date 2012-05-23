@@ -132,3 +132,33 @@ Served asset /application.js - 304 Not Modified (6ms)
 
 Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-05-23 16:46:59 +0800
 Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-23 16:50:26 +0800
+Processing by DummyController#index as HTML
+  Rendered dummy/index.html.erb within layouts/application (74.4ms)
+Completed 200 OK in 92ms (Views: 91.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/dummy.css?body=1" for 127.0.0.1 at 2012-05-23 16:50:26 +0800
+Served asset /dummy.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-05-23 16:50:26 +0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-05-23 16:50:26 +0800
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-05-23 16:50:26 +0800
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/dummy.js?body=1" for 127.0.0.1 at 2012-05-23 16:50:26 +0800
+Served asset /dummy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-05-23 16:50:26 +0800
+Served asset /application.js - 304 Not Modified (0ms)
