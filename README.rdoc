@@ -7,19 +7,14 @@ Requires Rails 3.0 or later and hpricot.
 
 You can easily translate country codes in your application like this:
 
-```ruby
-  <%= I18n.t @user.country, :scope => 'countries' %>  
-```
+   <%= I18n.t @user.country, :scope => 'countries' %>  
 
 And to create selection menu:
 
-```ruby
-    <%= localized_country_select(:user, :country, [], :include_blank => 'Please choose...') %>  
-```
+   <%= localized_country_select(:user, :country, [], :include_blank => 'Please choose...') %>  
 
 will become:
 
-```html
   <select name="user[country]" id="user_country">
   <option value="">Please choose...</option>
   <option disabled="disabled" value="">-------------</option>
@@ -27,7 +22,7 @@ will become:
   ...
   <option value="ZW">Zimbabwe</option>
   </select>  
-```
+
 == Install
 
 Add this in Gemfile of your application
@@ -57,15 +52,11 @@ See http://github.com/rails/country_select/tree/master/lib/country_select.rb
 
 @:exclude@ option
 
-```
   <%= localized_country_select(:user, :country, ['English'], :include_blank => 'Please choose...', :exclude => ['Afrikaans']) %>  
-```
 
 @:only@ option
 
-```
   <%= localized_country_select(:user, :country, ['English'], :include_blank => 'Please choose...', :only => ['German', 'French']) %>  
-```
 
 == Framework usage
 
@@ -73,13 +64,11 @@ This engine should also integrate nicely with various formbuilders, including Fo
 
 Formtastic example:
 
-```
 <%= semantic_form_for @user do |form| %>  
   ...
   <%= form.input :home_country, :as => :country, :priority_countries => ['USA'], :include_blank => 'Please choose country...', :only => ['USA', 'Germany', 'France']) %>    
   ...
 <% end %>  
-```
 
 == Copyright
 
