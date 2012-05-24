@@ -35,7 +35,7 @@ module CountrySelectEngine
     def self.localized_#{category}_array options = {}
       res = []
       list = I18n.translate(:#{category}).each do |key, value|
-        res << [value, key.to_s.upcase] if include_#{category.singularize}?(key.to_s, options)
+        res << [value+' ('+key.to_s+')', key.to_s] if include_#{category.singularize}?(key.to_s, options)
       end
       res.sort_by { |country| country.first.parameterize }
     end
@@ -61,7 +61,7 @@ module CountrySelectEngine
   class_eval %Q{
     def self.priority_#{category}_array(country_codes=[])
       countries = I18n.translate(:#{category})
-      country_codes.map { |code| [countries[code.to_s.to_sym], code.to_s.upcase] }
+      country_codes.map { |code| [countries[code.to_s.to_sym]+' ('+code.to_s+')', code.to_s] }
     end
   }
   end

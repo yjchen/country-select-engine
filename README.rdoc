@@ -84,11 +84,13 @@ Formtastic example:
 
 == Copyright
 
-Copyright (c) 2012 Yen-Ju Chen, released under the MIT license
-Copyright (c) 2008 Karel Minarik (www.karmi.cz), released under the MIT license
+- Copyright (c) 2012 Yen-Ju Chen, released under the MIT license
+- Copyright (c) 2008 Karel Minarik (www.karmi.cz), released under the MIT license
 
 == Other resources
 
 * http://github.com/rails/country_select (Default Rails plugin)
 * http://github.com/russ/country_code_select (Stores country code, not name)
+* http://github.com/onomojo/i18n-country-translations
+* http://github.com/onomojo/i18n_country_select
 
