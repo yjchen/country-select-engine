@@ -27,7 +27,7 @@ will become:
 
 Add this in Gemfile of your application
 
-gem 'country-select-engine'
+  gem 'country-select-engine'
 
 or any variation with :path or :git
 
