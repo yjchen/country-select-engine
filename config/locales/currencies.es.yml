@@ -1,0 +1,163 @@
+es:
+  currencies:
+    AED: dirham de los Emiratos Árabes Unidos
+    AFN: afgani afgano
+    ALL: lek albanés
+    AMD: dram armenio
+    ANG: florín de las Antillas Neerlandesas
+    AOA: kwanza angoleño
+    ARS: peso argentino
+    AUD: dólar australiano
+    AWG: florín de Aruba
+    AZN: manat azerí
+    BAM: marco convertible de Bosnia-Herzegovina
+    BBD: dólar de Barbados
+    BDT: taka de Bangladesh
+    BGN: nuevo lev búlgaro
+    BHD: dinar bahreiní
+    BIF: franco de Burundi
+    BMD: dólar de Bermudas
+    BND: dólar de Brunéi
+    BOB: boliviano
+    BRL: real brasileño
+    BSD: dólar de las Bahamas
+    BTN: ngultrum butanés
+    BWP: pula botsuana
+    BYR: rublo bielorruso
+    BZD: dólar de Belice
+    CAD: dólar canadiense
+    CDF: franco congoleño
+    CHF: franco suizo
+    CLP: peso chileno
+    CNY: yuan renminbi chino
+    COP: peso colombiano
+    CRC: colón costarricense
+    CUC: Cuban convertible peso
+    CUP: peso cubano
+    CVE: escudo de Cabo Verde
+    CZK: corona checa
+    DJF: franco de Yibuti
+    DKK: corona danesa
+    DOP: peso dominicano
+    DZD: dinar argelino
+    EEK: corona estonia
+    EGP: libra egipcia
+    ERN: nakfa eritreo
+    ETB: birr etíope
+    EUR: euro
+    FJD: dólar de las Islas Fiyi
+    FKP: libra de las Islas Malvinas
+    GBP: libra esterlina británica
+    GEL: lari georgiano
+    GHC: cedi ghanés
+    GHS: Ghanaian cedi
+    GIP: libra gibraltareña
+    GMD: dalasi gambiano
+    GNF: franco guineano
+    GTQ: quetzal guatemalteco
+    GYD: dólar guyanés
+    HKD: dólar de Hong Kong
+    HNL: lempira hondureño
+    HRK: kuna croata
+    HTG: gourde haitiano
+    HUF: florín húngaro
+    IDR: rupia indonesia
+    ILS: nuevo sheqel israelí
+    INR: rupia india
+    IQD: dinar iraquí
+    IRR: rial iraní
+    ISK: corona islandesa
+    JMD: dólar de Jamaica
+    JOD: dinar jordano
+    JPY: yen japonés
+    KES: chelín keniata
+    KGS: som kirguís
+    KHR: riel camboyano
+    KMF: franco comorense
+    KPW: won norcoreano
+    KRW: won surcoreano
+    KWD: dinar kuwaití
+    KYD: dólar de las Islas Caimán
+    KZT: tenge kazako
+    LAK: kip laosiano
+    LBP: libra libanesa
+    LKR: rupia de Sri Lanka
+    LRD: dólar liberiano
+    LSL: loti lesothense
+    LTL: litas lituana
+    LVL: lats letón
+    LYD: dinar libio
+    MAD: dirham marroquí
+    MDL: leu moldavo
+    MGA: ariary malgache
+    MKD: dinar macedonio
+    MMK: kyat de Myanmar
+    MNT: tugrik mongol
+    MOP: pataca de Macao
+    MRO: ouguiya mauritano
+    MUR: rupia mauriciana
+    MVR: rufiyaa de Maldivas
+    MWK: kwacha de Malawi
+    MXN: peso mexicano
+    MYR: ringgit malasio
+    MZN: metical mozambiqueño
+    NAD: dólar de Namibia
+    NGN: naira nigeriano
+    NIO: córdoba oro nicaragüense
+    NOK: corona noruega
+    NPR: rupia nepalesa
+    NZD: dólar neozelandés
+    OMR: rial omaní
+    PAB: balboa panameño
+    PEN: nuevo sol peruano
+    PGK: kina de Papúa Nueva Guinea
+    PHP: peso filipino
+    PKR: rupia pakistaní
+    PLN: zloty polaco
+    PYG: guaraní paraguayo
+    QAR: riyal de Qatar
+    RON: leu rumano
+    RSD: dinar serbio
+    RUB: rublo ruso
+    RWF: franco ruandés
+    SAR: riyal saudí
+    SBD: dólar de las Islas Salomón
+    SCR: rupia de Seychelles
+    SDG: libra sudanesa
+    SEK: corona sueca
+    SGD: dólar singapurense
+    SHP: libra de Santa Elena
+    SKK: corona eslovaca
+    SLL: leone de Sierra Leona
+    SOS: chelín somalí
+    SRD: dólar surinamés
+    STD: dobra de Santo Tomé y Príncipe
+    SVC: colón salvadoreño
+    SYP: libra siria
+    SZL: lilangeni suazi
+    THB: baht tailandés
+    TJS: somoni tayiko
+    TMM: manat turcomano
+    TND: dinar tunecino
+    TOP: paʻanga tongano
+    TRY: lira turca
+    TTD: dólar de Trinidad y Tobago
+    TWD: nuevo dólar taiwanés
+    TZS: chelín tanzano
+    UAH: grivnia ucraniana
+    UGX: chelín ugandés
+    USD: dólar estadounidense
+    UYU: peso uruguayo
+    UZS: sum uzbeko
+    VEF: bolívar fuerte venezolano
+    VND: dong vietnamita
+    VUV: vatu vanuatuense
+    WST: tala samoano
+    XAF: franco CFA BEAC
+    XCD: dólar del Caribe Oriental
+    XOF: franco CFA BCEAO
+    XPF: franco CFP
+    YER: rial yemení
+    ZAR: rand sudafricano
+    ZMK: kwacha zambiano
+    ZWD: dólar de Zimbabue
