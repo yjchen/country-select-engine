@@ -4,6 +4,8 @@ Translation of US is <%= t('US', :scope => 'countries') %>
 </p>
 <p>
 <%= localized_country_select(:user, :country, [], :include_blank => 'Please choose...') %>
+<%= localized_language_select(:user, :country, [], :include_blank => 'Please choose...') %>
+<%= localized_currency_select(:user, :country, [], :include_blank => 'Please choose...') %>
 </p>
 <p><b>In Deutsch (Germany)</b></p>
 <% I18n.locale = :de %>
@@ -12,6 +14,8 @@ Translation of US is <%= t('US', :scope => 'countries') %>
 </p>
 <p>
 <%= localized_country_select(:user, :country, [], :include_blank => 'Please choose...') %>
+<%= localized_language_select(:user, :country, [], :include_blank => 'Please choose...') %>
+<%= localized_currency_select(:user, :country, [], :include_blank => 'Please choose...') %>
 </p>
 <p><b>In Traditional Chinese</b></p>
 <% I18n.locale = :'zh-TW' %>
@@ -20,4 +24,6 @@ Translation of US is <%= t('US', :scope => 'countries') %>
 </p>
 <p>
 <%= localized_country_select(:user, :country, [], :include_blank => 'Please choose...') %>
+<%= localized_language_select(:user, :country, [], :include_blank => 'Please choose...') %>
+<%= localized_currency_select(:user, :country, [], :include_blank => 'Please choose...') %>
 </p>

@@ -25,18 +25,24 @@ require "country-select-engine/engine"
 # See http://github.com/rails/country_select/tree/master/lib/country_select.rb
 #
 module CountrySelectEngine
-  class << self
-    # Returns array with codes and localized country names (according to <tt>I18n.locale</tt>)
-    # for <tt><option></tt> tags
-    def localized_countries_array options = {}
+  categories = ['currencies', 'countries', 'languages']
+  categories.each do |category|
+
+  # Returns array with codes and localized country names 
+  # (according to <tt>I18n.locale</tt>)
+  # for <tt><option></tt> tags
+  class_eval %Q{
+    def self.localized_#{category}_array options = {}
       res = []
-      list = I18n.translate(:countries).each do |key, value|
-        res << [value, key.to_s.upcase] if include_country?(key.to_s, options)
+      list = I18n.translate(:#{category}).each do |key, value|
+        res << [value, key.to_s.upcase] if include_#{category.singularize}?(key.to_s, options)
       end
       res.sort_by { |country| country.first.parameterize }
     end
+  }
 
-    def include_country?(key, options)
+  class_eval %Q{
+    def self.include_#{category.singularize}?(key, options)
       if options[:only]
         return options[:only].include?(key)
       end
@@ -45,15 +51,19 @@ module CountrySelectEngine
       end
       true
     end
+  }
 
-    # Return array with codes and localized country names for array of country codes passed as argument
-    # == Example
-    #   priority_countries_array([:TW, :CN])
-    #   # => [ ['Taiwan', 'TW'], ['China', 'CN'] ]
-    def priority_countries_array(country_codes=[])
-      countries = I18n.translate(:countries)
-      country_codes.map { |code| [countries[code.to_s.upcase.to_sym], code.to_s.upcase] }
+  # Return array with codes and localized country names 
+  # for array of country codes passed as argument
+  # == Example
+  #   priority_countries_array([:TW, :CN])
+  #   # => [ ['Taiwan', 'TW'], ['China', 'CN'] ]
+  class_eval %Q{
+    def self.priority_#{category}_array(country_codes=[])
+      countries = I18n.translate(:#{category})
+      country_codes.map { |code| [countries[code.to_s.to_sym], code.to_s.upcase] }
     end
+  }
   end
 end
 
@@ -61,14 +71,19 @@ module ActionView
   module Helpers
 
     module FormOptionsHelper
+      categories = ['currencies', 'countries', 'languages']
 
       # Return select and option tags for the given object and method, using +localized_country_options_for_select+
       # to generate the list of option tags. Uses <b>country code</b>, not name as option +value+.
       # Country codes listed as an array of symbols in +priority_countries+ argument will be listed first
       # TODO : Implement pseudo-named args with a hash, not the "somebody said PHP?" multiple args sillines
-      def localized_country_select(object, method, priority_countries = nil, options = {}, html_options = {})
+      categories.each do |category|
+      class_eval %Q{
+      def localized_#{category.singularize}_select(object, method, priority_countries = nil, options = {}, html_options = {})
         InstanceTag.new(object, method, self, options.delete(:object)).
-          to_localized_country_select_tag(priority_countries, options, html_options)
+          to_localized_#{category.singularize}_select_tag(priority_countries, options, html_options)
+      end
+      }
       end
       alias_method :country_select, :localized_country_select
 
@@ -76,45 +91,63 @@ module ActionView
       # Use +selected_value+ for setting initial value
       # It behaves likes older object-binded brother +localized_country_select+ otherwise
       # TODO : Implement pseudo-named args with a hash, not the "somebody said PHP?" multiple args sillines
-      def localized_country_select_tag(name, selected_value = nil, priority_countries = nil, html_options = {})
-        select_tag name.to_sym, localized_country_options_for_select(selected_value, priority_countries), html_options.stringify_keys
+      categories.each do |category|
+      class_eval %Q{
+      def localized_#{category.singularize}_select_tag(name, selected_value = nil, priority_countries = nil, html_options = {})
+        select_tag name.to_sym, localized_#{category.singularize}_options_for_select(selected_value, priority_countries), html_options.stringify_keys
+      end
+      }
       end
       alias_method :country_select_tag, :localized_country_select_tag
 
       # Returns a string of option tags for countries according to locale. Supply the country code in upper-case ('US', 'DE')
       # as +selected+ to have it marked as the selected option tag.
       # Country codes listed as an array of symbols in +priority_countries+ argument will be listed first
-      def localized_country_options_for_select(selected = nil, priority_countries = nil, options = {})
+      categories.each do |category|
+      class_eval %Q{
+      def localized_#{category.singularize}_options_for_select(selected = nil, priority_countries = nil, options = {})
         country_options = ""
         if priority_countries
-          country_options += options_for_select(CountrySelectEngine::priority_countries_array(priority_countries), selected)
-          country_options += "<option value=\"\" disabled=\"disabled\">-------------</option>\n"
-          return country_options + options_for_select(CountrySelectEngine::localized_countries_array(options) - CountrySelectEngine::priority_countries_array(priority_countries), selected)
+          country_options += options_for_select(CountrySelectEngine::priority_#{category}_array(priority_countries), selected)
+          country_options += "<option value='' disabled='disabled'>-------------</option>\n"
+          return country_options + options_for_select(CountrySelectEngine::localized_#{category}_array(options) - CountrySelectEngine::priority_#{category}_array(priority_countries), selected)
         else
-          return country_options + options_for_select(CountrySelectEngine::localized_countries_array(options), selected)
+          return country_options + options_for_select(CountrySelectEngine::localized_#{category}_array(options), selected)
         end
+      end
+      }
       end
       alias_method :country_options_for_select, :localized_country_options_for_select
 
     end
 
     class InstanceTag
-      def to_localized_country_select_tag(priority_countries, options, html_options)
+      categories = ['currencies', 'countries', 'languages']
+      categories.each do |category|
+      class_eval %Q{
+      def to_localized_#{category.singularize}_select_tag(priority_countries, options, html_options)
         html_options = html_options.stringify_keys
         add_default_name_and_id(html_options)
         value = value(object)
         content_tag("select",
           add_options(
-            localized_country_options_for_select(value, priority_countries, options).html_safe,
+            localized_#{category.singularize}_options_for_select(value, priority_countries, options).html_safe,
             options, value
           ), html_options
         )
       end
+      }
+      end
     end
 
     class FormBuilder
-      def localized_country_select(method, priority_countries = nil, options = {}, html_options = {})
-        @template.localized_country_select(@object_name, method, priority_countries, options.merge(:object => @object), html_options)
+      categories = ['currencies', 'countries', 'languages']
+      categories.each do |category|
+      class_eval %Q{
+      def localized_#{category.singularize}_select(method, priority_countries = nil, options = {}, html_options = {})
+        @template.localized_#{category.singularize}_select(@object_name, method, priority_countries, options.merge(:object => @object), html_options)
+      end
+      }
       end
       alias_method :country_select, :localized_country_select
     end
