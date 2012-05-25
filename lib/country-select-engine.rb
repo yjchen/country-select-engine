@@ -35,23 +35,31 @@ module CountrySelectEngine
     def self.localized_#{category}_array options = {}
       res = []
       list = I18n.translate(:#{category}).each do |key, value|
-        res << [value+' ('+key.to_s+')', key.to_s] if include_#{category.singularize}?(key.to_s, options)
+        res << [self.value_with_symbol(key, value, options), key.to_s] if include_key?(key.to_s, options)
       end
       res.sort_by { |country| country.first.parameterize }
     end
   }
 
-  class_eval %Q{
-    def self.include_#{category.singularize}?(key, options)
-      if options[:only]
-        return options[:only].include?(key)
-      end
-      if options[:except]
-        return !options[:except].include?(key)
-      end
-      true
+  def self.value_with_symbol(key, value, options = {})
+    if options[:symbol] == :prepend
+      return "#{key.to_s}, #{value}"
+    elsif options[:symbol] == :append
+      return "#{value} (#{key.to_s})"
+    else
+      return value
     end
-  }
+  end
+
+  def self.include_key?(key, options)
+    if options[:only]
+      return options[:only].include?(key)
+    end
+    if options[:except]
+      return !options[:except].include?(key)
+    end
+    true
+  end
 
   # Return array with codes and localized country names 
   # for array of country codes passed as argument
