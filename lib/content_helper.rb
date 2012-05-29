@@ -1,3 +1,4 @@
+=begin
 module CountrySelectEngine
   module ContentHelper
     def countries_yaml_content
@@ -39,3 +40,4 @@ HASH
     alias_method :yml_output, :yaml_output
   end
 end
+=end

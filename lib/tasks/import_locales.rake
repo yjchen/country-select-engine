@@ -1,3 +1,4 @@
+=begin
 require 'parse_helper'
 require 'content_helper'
 require 'hpricot'
@@ -51,6 +52,7 @@ class CountrySelectEngine::Importer
     end
   end
 end
+=end
 
 =begin
   task :find_place_by_google, :begin, :end, :needs => :environment do |t, args|
@@ -59,6 +61,7 @@ end
     (args.begin..args.end).each do |n|
 =end
 
+=begin
 namespace :country_select do
   desc 'import locales'
   task :import_locales, [:locales] do |t, args|
@@ -66,3 +69,4 @@ namespace :country_select do
     CountrySelectEngine::Importer.new.import(args.locales)
   end
 end
+=end
