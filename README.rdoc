@@ -60,6 +60,10 @@ Don't forget to restart the application when you add new locale.
 ActionView helper code is adapted from Rails' default *country_select* plugin (previously in core).
 See http://github.com/rails/country_select/tree/master/lib/country_select.rb
 
+== Chosen javascript
+
+It includes Chosen (http://harvesthq.github.com/chosen/) in assets for easiler selection.
+
 == Options
 
 @:exclude@ option
