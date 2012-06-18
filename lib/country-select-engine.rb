@@ -102,7 +102,7 @@ module ActionView
       categories.each do |category|
       class_eval %Q{
       def localized_#{category.singularize}_select_tag(name, selected_value = nil, priority_countries = nil, html_options = {})
-        select_tag name.to_sym, localized_#{category.singularize}_options_for_select(selected_value, priority_countries), html_options.stringify_keys
+        select_tag name.to_sym, localized_#{category.singularize}_options_for_select(selected_value, priority_countries).html_safe, html_options.stringify_keys
       end
       }
       end
