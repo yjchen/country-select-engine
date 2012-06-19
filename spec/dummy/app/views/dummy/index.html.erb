@@ -6,6 +6,7 @@ Translation of US is <%= t('US', :scope => 'countries') %>
 <%= localized_country_select(:user, :country, [], :include_blank => 'Please choose...') %>
 <%= localized_language_select(:user, :country, [], :include_blank => 'Please choose...') %>
 <%= localized_currency_select(:user, :country, [], :include_blank => 'Please choose...') %>
+<%= localized_timezone_select(:user, :country, [], :include_blank => 'Please choose...') %>
 </p>
 <p><b>In Deutsch (Germany)</b></p>
 <% I18n.locale = :de %>
@@ -26,6 +27,7 @@ Translation of US is <%= t('US', :scope => 'countries') %>
 <%= localized_country_select(:user, :country, [], {:include_blank => 'Please choose...', :symbol => :append}) %>
 <%= localized_language_select(:user, :country, [], :include_blank => 'Please choose...') %>
 <%= localized_currency_select(:user, :country, [], {:include_blank => 'Please choose...', :symbol => :prepend}) %>
+<%= localized_timezone_select(:user, :country, [], {:include_blank => 'Please choose...'}) %>
 </p>
 <% I18n.locale = :en %>
 <p>

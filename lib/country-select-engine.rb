@@ -25,7 +25,7 @@ require "country-select-engine/engine"
 # See http://github.com/rails/country_select/tree/master/lib/country_select.rb
 #
 module CountrySelectEngine
-  categories = ['currencies', 'countries', 'languages']
+  categories = ['currencies', 'countries', 'languages', 'timezones']
   categories.each do |category|
 
   # Returns array with codes and localized country names 
@@ -79,7 +79,7 @@ module ActionView
   module Helpers
 
     module FormOptionsHelper
-      categories = ['currencies', 'countries', 'languages']
+      categories = ['currencies', 'countries', 'languages', 'timezones']
 
       # Return select and option tags for the given object and method, using +localized_country_options_for_select+
       # to generate the list of option tags. Uses <b>country code</b>, not name as option +value+.
@@ -130,7 +130,7 @@ module ActionView
     end
 
     class InstanceTag
-      categories = ['currencies', 'countries', 'languages']
+      categories = ['currencies', 'countries', 'languages', 'timezones']
       categories.each do |category|
       class_eval %Q{
       def to_localized_#{category.singularize}_select_tag(priority_countries, options, html_options)
@@ -149,7 +149,7 @@ module ActionView
     end
 
     class FormBuilder
-      categories = ['currencies', 'countries', 'languages']
+      categories = ['currencies', 'countries', 'languages', 'timezones']
       categories.each do |category|
       class_eval %Q{
       def localized_#{category.singularize}_select(method, priority_countries = nil, options = {}, html_options = {})
