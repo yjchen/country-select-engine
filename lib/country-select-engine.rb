@@ -33,11 +33,16 @@ module CountrySelectEngine
   # for <tt><option></tt> tags
   class_eval %Q{
     def self.localized_#{category}_array options = {}
+      options.reverse_merge!(:sort => true)
       res = []
       list = I18n.translate(:#{category}).each do |key, value|
         res << [self.value_with_symbol(key, value, options), key.to_s] if include_key?(key.to_s, options)
       end
-      res.sort_by { |country| country.first.parameterize }
+      if options[:sort]
+        res.sort_by { |country| country.first.parameterize }
+      else
+        res
+      end
     end
   }
 
