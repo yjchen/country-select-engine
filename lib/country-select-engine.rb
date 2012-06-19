@@ -47,7 +47,19 @@ module CountrySelectEngine
   }
 
   def self.value_with_symbol(key, value, options = {})
-    if options[:symbol] == :prepend
+    if options[:timezone]
+      timezone = ActiveSupport::TimeZone[key.to_s] 
+      if timezone
+        offset = "GMT#{ActiveSupport::TimeZone[key.to_s].formatted_offset}"
+        if options[:symbol] == :prepend 
+          return "(#{offset}) #{value}"
+        elsif options[:symbol] == :append 
+          return "#{value} (#{offset})"
+        end
+      else
+        return value
+      end
+    elsif options[:symbol] == :prepend
       return "#{key.to_s}, #{value}"
     elsif options[:symbol] == :append
       return "#{value} (#{key.to_s})"
