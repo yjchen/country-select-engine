@@ -51,9 +51,9 @@ module CountrySelectEngine
       timezone = ActiveSupport::TimeZone[key.to_s] 
       if timezone
         offset = "GMT#{ActiveSupport::TimeZone[key.to_s].formatted_offset}"
-        if options[:symbol] == :prepend 
+        if options[:timezone] == :prepend 
           return "(#{offset}) #{value}"
-        elsif options[:symbol] == :append 
+        elsif options[:timezone] == :append 
           return "#{value} (#{offset})"
         end
       else
