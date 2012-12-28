@@ -29,13 +29,3 @@ Translation of US is <%= t('US', :scope => 'countries') %>
 <%= localized_currency_select(:user, :country, [], {:include_blank => 'Please choose...', :symbol => :prepend}) %>
 <%= localized_timezone_select(:user, :country, [], {:include_blank => 'Please choose...', :sort => false, :timezone => :prepend}) %>
 </p>
-<% I18n.locale = :en %>
-<p>
-With <a href="http://harvesthq.github.com/chosen/">Chosen</a>.
-</p>
-<p>
-<%= localized_country_select(:user, :country, [], {:include_blank => 'Please choose...', :symbol => :append}, {:id => 'chosen_country'}) %>
-</p>
-<script type="text/javascript">
-  $("#chosen_country").chosen();
-</script>

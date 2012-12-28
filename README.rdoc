@@ -2,7 +2,7 @@
 
 A Rails engine to provide localized country names, languages and currencies. For example, it translates 'en' to 'English' for language, 'USD' to 'US Dollar' for currency and 'US' to 'United States' for country.
 
-It uses Rails internationalization framework (http://rails-i18n.org) for translation. It requires Rails 3.2 or later (and hpricot optionally).
+It uses Rails internationalization framework (http://rails-i18n.org) for translation. It requires Rails 3.2 or later
 
 You can easily translate country codes in your application like this:
 
@@ -59,10 +59,6 @@ Don't forget to restart the application when you add new locale.
 
 ActionView helper code is adapted from Rails' default *country_select* plugin (previously in core).
 See http://github.com/rails/country_select/tree/master/lib/country_select.rb
-
-== Chosen javascript
-
-It includes Chosen (http://harvesthq.github.com/chosen/) in assets for easiler selection.
 
 == Options
 
