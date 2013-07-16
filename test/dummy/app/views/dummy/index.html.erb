@@ -1,3 +1,4 @@
+<div>
 <p><b>In English</b></p>
 <p>
 Translation of US is <%= t('US', :scope => 'countries') %>
@@ -8,6 +9,8 @@ Translation of US is <%= t('US', :scope => 'countries') %>
 <%= localized_currency_select(:user, :country, [], :include_blank => 'Please choose...') %>
 <%= localized_timezone_select(:user, :country, [], :include_blank => 'Please choose...') %>
 </p>
+</div>
+<div>
 <p><b>In Deutsch (Germany)</b></p>
 <% I18n.locale = :de %>
 <p>
@@ -18,6 +21,8 @@ Translation of US is <%= t('US', :scope => 'countries') %>
 <%= localized_language_select(:user, :country, [], :include_blank => 'Please choose...') %>
 <%= localized_currency_select(:user, :country, [], :include_blank => 'Please choose...') %>
 </p>
+</div>
+<div>
 <p><b>In Traditional Chinese</b></p>
 <% I18n.locale = :'zh-TW' %>
 <p>
@@ -29,3 +34,12 @@ Translation of US is <%= t('US', :scope => 'countries') %>
 <%= localized_currency_select(:user, :country, [], {:include_blank => 'Please choose...', :symbol => :prepend}) %>
 <%= localized_timezone_select(:user, :country, [], {:include_blank => 'Please choose...', :sort => false, :timezone => :prepend}) %>
 </p>
+</div>
+<div>
+  <% I18n.locale = :en %>
+  <%= form_for @selected do |f| %>
+    <%= f.localized_country_select(:country, [:TW, :CN]) %>
+    <hr/>
+    <%= f.select(:country, localized_country_options_for_select(@selected.country).html_safe) %>
+  <% end %>
+</div>

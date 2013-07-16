@@ -105,8 +105,14 @@ module ActionView
       categories.each do |category|
       class_eval %Q{
       def localized_#{category.singularize}_select(object, method, priority_countries = nil, options = {}, html_options = {})
-        InstanceTag.new(object, method, self, options.delete(:object)).
-          to_localized_#{category.singularize}_select_tag(priority_countries, options, html_options)
+        choices = CountrySelectEngine.localized_#{category}_array
+        if priority_countries
+          priority = CountrySelectEngine::priority_#{category}_array(priority_countries)
+          priority << ['--------', nil]
+          choices = priority + choices
+        end
+
+        Tags::Select.new(object, method, self, choices, options, html_options).render
       end
       }
       end
@@ -146,31 +152,12 @@ module ActionView
 
     end
 
-    class InstanceTag
-      categories = ['currencies', 'countries', 'languages', 'timezones']
-      categories.each do |category|
-      class_eval %Q{
-      def to_localized_#{category.singularize}_select_tag(priority_countries, options, html_options)
-        html_options = html_options.stringify_keys
-        add_default_name_and_id(html_options)
-        value = options.has_key?(:selected) ? options[:selected] : value(object)
-        content_tag("select",
-          add_options(
-            localized_#{category.singularize}_options_for_select(value, priority_countries, options).html_safe,
-            options, value
-          ), html_options
-        )
-      end
-      }
-      end
-    end
-
     class FormBuilder
       categories = ['currencies', 'countries', 'languages', 'timezones']
       categories.each do |category|
       class_eval %Q{
       def localized_#{category.singularize}_select(method, priority_countries = nil, options = {}, html_options = {})
-        @template.localized_#{category.singularize}_select(@object_name, method, priority_countries, options.merge(:object => @object), html_options)
+        @template.localized_#{category.singularize}_select(@object_name, method, priority_countries, objectify_options(options), @default_options.merge(html_options))
       end
       }
       end
