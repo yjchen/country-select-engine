@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/yjchen/country-select-engine"
   s.summary     = "Rails engine for localized_country_select."
   s.description = "Provide a list of localized countries, currencies and time zones"
+  s.license = 'MIT'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
